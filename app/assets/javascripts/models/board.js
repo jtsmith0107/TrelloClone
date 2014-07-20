@@ -3,7 +3,12 @@ TrelloClone.Models.Board = Backbone.Model.extend({
   
   parse: function(jsonResp){
     if(jsonResp.lists){
+      var resp = jsonResp
       this.lists().set(jsonResp.lists, {parse: true});
+
+      $.each(this.lists().models, function(idx, list){
+        list.cards().set(resp.lists[idx].cards, {parse: true});
+      });
       delete jsonResp.lists;
     }
     return jsonResp;

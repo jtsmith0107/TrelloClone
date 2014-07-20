@@ -1,0 +1,20 @@
+<form role="form">
+  <div class="form-group">
+  
+  <input type="hidden" 
+  name="card[list_id]" 
+  value="<%= card.escape("id") %>">
+  
+  <label for="card[title]">Card</label>
+    <input type="text" class="form-control"
+    name="card[title]" id="card[title]"
+    placeholder="Enter Title">
+
+    <label for=card[description]>Description</label>
+    <textarea name="card[description]" rows="2"
+    class="form-control" id="card[description]"></textarea>
+    
+    </div>
+  <button type="submit" class="btn btn-danger col-xs-10">Create Card</button>
+  
+</form>
