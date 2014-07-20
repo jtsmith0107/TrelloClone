@@ -16,6 +16,7 @@ TrelloClone.Views.ListsNew = Backbone.View.extend({
   },
   
   submit: function(event){
+
     var view = this;
     event.preventDefault();    
     var params = $(event.currentTarget).serializeJSON();

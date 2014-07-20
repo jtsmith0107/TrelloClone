@@ -5,15 +5,18 @@ TrelloClone.Collections.Boards = Backbone.Collection.extend({
   
 
   getOrFetch: function(id){
+    // var showView = new TrelloClone.Views.showBoard({
+    //   model: board
+    // });
+    // router._swapView(showView);
     var boards = this;
     var board;
     if(board = this.get(id)){
-      board.fetch();
+      board.fetch({async: false});
     } else{
       board = new TrelloClone.Models.Board({id: id});
-      board.fetch({
-        success: function() { boards.add(board) }
-      });
+      board.fetch({async: false});
+      boards.add(board);
     }
     return board;
   },
