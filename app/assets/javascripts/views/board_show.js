@@ -12,6 +12,29 @@ TrelloClone.Views.showBoard = Backbone.CompositeView.extend({
     this.model.lists().each(this.addList.bind(this));
   },  
   
+  events: {
+    "click button.destroy" : "destroyBoard"
+  },
+  
+  destroyBoard: function(event){
+    event.preventDefault();
+    this.model.destroy();
+    Backbone.history.navigate("/", { trigger: true }); 
+    
+  },
+  
+  
+  // updateBreadcrumb: function(){
+  //   // data for list elements in the breadcrumb ol need url and
+  //   var links = TrelloClone.Collections.links;
+  //   links.add(new TrelloClone.Models.Link({url: "/#/board"}));
+  //   links.add(new TrelloClone.Models.Link({url: "/"}));
+  //   var breadcrumbView = new TrelloClone.Views.Breadcrumb({
+  //    links:
+  //   });
+  //   this.addSubview('.breadcrumb', breadcrumbView);
+  // },
+  
   addList: function(list){
     var listView = new TrelloClone.Views.ShowList({
       model: list
@@ -25,6 +48,7 @@ TrelloClone.Views.showBoard = Backbone.CompositeView.extend({
     });
     this.$el.html(content);
     this.attachSubviews();
+    // this.updateBreadcrumb();
     return this;
   }
 });

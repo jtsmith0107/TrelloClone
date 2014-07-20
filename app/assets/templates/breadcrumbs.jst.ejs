@@ -1,0 +1,5 @@
+<ol class="breadcrumb" id="breadcrumb">
+  <% links.each(function(link){ %>
+    <li><a href="#<%= link.escape("url") %>"><%= link.escape("Title") %></a></li>
+  <% }); %>
+</ol>

@@ -1,12 +1,16 @@
-<form>
+<form role="form">
+  <div class="form-group">
+
   
   <input type="hidden" 
   name="list[board_id]" 
   value="<%= list.escape("id") %>">
   
-  <label> Title
-    <input type = "text" name="list[title]" id="list[title]">
-  </label>    
-  <input type="submit">      
+  <label for="list[title]"> Title</label>
+    <input type="text" class="form-control"
+    name="list[title]" id="list[title]"
+    placeholder="Enter Title">
+    
+  <button type="submit" class="btn btn-danger">Create List</button>
   
 </form>

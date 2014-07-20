@@ -1,10 +1,28 @@
 <h3><%= board.escape("title") %></h3>
 
-<div class="lists"></div>
+<div class="lists btn-group btn-group-lg"></div>
 
-<div class="lists-new"></div>
+<div class="btn btn-primary dropdown-toggle">
+  
+  <div class="lists-new "></div>
+  <!-- <div class="boards-new"></div> -->
+</div>
 
+<div class="btn-group-justified">
+  <div class="col xs-4">
+   <a href="/#/">
+  <button type ="button" class="btn btn-danger col-xs-4">
+  <span class="glyphicon glyphicon-arrow-left"></span>
+   Boards
+  </button>  
+  </a>
+  
+   <a href="/#/">
+ <button type="button" class="destroy btn btn-danger col-xs 4">
+   <span class="glyphicon glyphicon-remove"></span>
+   Delete Board
+ </button>
+   </a>
 
-<a href="/#/">Return to boards</a>
-
+</div></div>
 

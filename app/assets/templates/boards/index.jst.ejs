@@ -1,12 +1,20 @@
-<div class="row">
-  <h1>Boards Index</h1>
-  <ul>
-    <% boards.each(function(board){ %>
-      <li> <a href = "#/boards/<%= board.escape("id") %>"><%= board.escape("title") %></a></li>
-      <% }); %>
-    </ul>
-   <div class="boards-new"></div>
-   <!-- <a href="#/boards/new">New Board</a> -->
+<h3>Boards Index</h3>
+
+<div class="btn-group">
+  
+  <% boards.each(function(board){ %>
+    <a href = "#/boards/<%= board.escape("id") %>">
+      <div class="btn boardTile btn-primary col-xs-3">
+          <%= board.escape("title") %>
+      </div>
+    </a>
+  <% }); %>
+
+
+    <div class="btn btn-primary dropdown-toggle col-xs-4">
+       <div class="boards-new"></div>
+      <!-- <div class="boards-new"></div> -->
+    </div>
 
 </div>
 

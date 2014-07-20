@@ -1,0 +1,1 @@
+TrelloClone.Models.Link = Backbone.Model.extend({});
