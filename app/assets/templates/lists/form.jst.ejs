@@ -6,10 +6,16 @@
   name="list[board_id]" 
   value="<%= list.escape("id") %>">
   
-  <label for="list[title]"> Title</label>
+  <label for="list[title]">List</label>
     <input type="text" class="form-control"
     name="list[title]" id="list[title]"
     placeholder="Enter Title">
+    
+    <label for=list[ord]>Order</label>
+    <input type="text" name="list[ord]" 
+    class="form-control" id="list[ord]" 
+    placeholder="0">
+    
     
   <button type="submit" class="btn btn-danger">Create List</button>
   

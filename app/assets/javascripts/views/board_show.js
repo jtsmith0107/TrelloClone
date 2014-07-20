@@ -5,6 +5,7 @@ TrelloClone.Views.showBoard = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.render);   
     this.listenTo(this.model.lists(),"sync remove", this.render);
     this.listenTo(this.model.lists(), "add", this.addList);
+    this.listenTo(this.model.lists(), "reset", this.render)
     this._subviews = {};
     // include for forms to build lists
     var formView = new TrelloClone.Views.ListsNew({model: this.model});

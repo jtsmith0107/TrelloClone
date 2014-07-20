@@ -34,7 +34,7 @@ module Api
     private
 
     def board_params
-      params.require(:board).permit(:title)
+      params.require(:board).permit(:title, :ord)
     end
   end
 end
