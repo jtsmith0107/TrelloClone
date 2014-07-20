@@ -10,9 +10,9 @@ TrelloClone.Models.Board = Backbone.Model.extend({
   },
   
   lists: function(){
-    this.lists() = this._lists ||
-    new TrelloClone.Collections.Lists([], {board: this});
-    return this._comments;
+    this._lists = this._lists ||
+      new TrelloClone.Collections.Lists([], {board: this});
+    return this._lists;
   }
   
   

@@ -5,8 +5,7 @@ TrelloClone.Views.newBoard = Backbone.View.extend({
     "submit form" : "submit"
   },
   
-  render: function(){
-    
+  render: function(){    
     var content = this.template();
     this.$el.html(content);
     
