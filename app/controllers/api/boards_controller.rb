@@ -2,7 +2,11 @@ module Api
   class BoardsController < ApiController
     def create
       @board = current_user.boards.new(board_params)
-
+      @board.ord = current_user.boards.max_by do |board|
+        board.ord
+      end.ord
+      @board.ord += 1;
+      
       if @board.save
         render json: @board
       else
@@ -34,7 +38,7 @@ module Api
     private
 
     def board_params
-      params.require(:board).permit(:title, :ord)
+      params.require(:board).permit(:title)
     end
   end
 end

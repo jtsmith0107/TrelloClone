@@ -21,8 +21,24 @@
 //  margin: 10px;
 //}
 
+.well {
+  background-color: lightskyblue;
+  float: left;
+}
+
+.panel-heading{
+  height: 45px;
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: capitalize;
+}
+
 .dropdown-toggle{
   width: 180px;
   margin: 10px;
+}
+
+.panel-body{
+  text-align: center;
 }
 

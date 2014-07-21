@@ -4,12 +4,23 @@ module Api
 
     def create
       @card = current_list.cards.new(card_params)
-
+      
+      @card.ord = current_list.cards.max_by do |card|
+        card.ord
+      end.ord
+      @card.ord+=1;
+      
       if @card.save
         render json: @card
       else
         render json: @card.errors.full_messages, status: :unprocessable_entity
       end
+    end
+
+    def destroy
+      @card = Card.find(params[:id])
+      @card.try(:destroy)
+      render json: {}      
     end
 
     private

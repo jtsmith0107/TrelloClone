@@ -14,7 +14,6 @@ TrelloClone.Views.CardsNew = Backbone.View.extend({
   },
   
   submit: function(event){
-    debugger
     var view = this;
     event.preventDefault();    
     var params = $(event.currentTarget).serializeJSON();

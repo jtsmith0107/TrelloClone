@@ -4,7 +4,11 @@ module Api
 
     def create
       @list = current_board.lists.new(list_params)
-
+      
+      @list.ord = current_board.lists.max_by do |list|
+        list.ord
+      end.ord
+      @list.ord += 1;
       if @list.save
         render json: @list
       else

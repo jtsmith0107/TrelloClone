@@ -11,6 +11,7 @@
 
 class Board < ActiveRecord::Base
   validates :title, :user, presence: true
+  validates :ord, :uniqueness => true
 
   belongs_to :user
   has_many :lists
