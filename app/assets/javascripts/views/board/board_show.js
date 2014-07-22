@@ -87,6 +87,40 @@ TrelloClone.Views.showBoard = Backbone.CompositeView.extend({
     // this.removeSubview(colList, subview);
   },
   
+  initializeSortable: function(){
+    var startOrd;
+    var endOrd;
+    $(function() {
+      $( ".col-xs-4" ).sortable({
+        connectWith: ".col-xs-4",
+        handle: ".portlet-header",
+        cancel: ".portlet-toggle",
+        placeholder: "portlet-placeholder ui-corner-all",
+        start: function(event, ui){
+          var col = parseInt($(event.target).attr("id").slice(-1));
+          var row = ui.item.index();
+          startOrd = col + row * 3;
+          console.log(startOrd);
+        },
+        update: function(event, ui){
+          var col = parseInt($(event.target).attr("id").slice(-1));
+          var row = ui.item.index();
+          endOrd = col + row * 3;
+          console.log(endOrd);
+      
+        },
+        
+      });
+      // var startListId = TrelloClone.Collections.lists.where({
+    //      ord: startOrd, board_id:
+    //    });
+       // $.ajax({
+       //           url: "api/lists/"
+       //       })
+    });
+    
+  },
+  
   render: function(){
     var content = this.template({
       board: this.model      
@@ -98,6 +132,7 @@ TrelloClone.Views.showBoard = Backbone.CompositeView.extend({
       .find( ".portlet-header" )
         .addClass( "ui-widget-header ui-corner-all" )
         .prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
+    setTimeout(this.initializeSortable, 0);
         
     this.attachSubviews();
     // this.updateBreadcrumb();

@@ -60,23 +60,5 @@
   <!-- <div class="boards-new"></div> -->
 
 <script type="text/javascript">
-var startOrd;
-var endOrd;
-$(function() {
-  $( ".col-xs-4" ).sortable({
-    connectWith: ".col-xs-4",
-    handle: ".portlet-header",
-    cancel: ".portlet-toggle",
-    placeholder: "portlet-placeholder ui-corner-all",
-    start: function(event, ui){
-      var col = parseInt($(event.target).attr("id").slice(-1));
-      var row = ui.item.index();
-      startOrd = col + row * 3;
-    },
-    end: 
-  });
-  $.ajax({
-    
-  })
-});
+
 </script>
