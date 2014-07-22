@@ -52,7 +52,6 @@ Backbone.CompositeView = Backbone.View.extend({
   subviews: function (selector) { // Optionally pass a selector and I'll initialize/return an array
     // of subviews for the sel.
     this._subviews = this._subviews || {};
-
     if (!selector) {
       return this._subviews;
     } else {

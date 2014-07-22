@@ -3,12 +3,18 @@ module Api
     before_action :require_board_member!
 
     def create
+      max_ord = current_board.lists.max_by do |list|
+        list.ord
+      end
+      
       @list = current_board.lists.new(list_params)
       
-      @list.ord = current_board.lists.max_by do |list|
-        list.ord
-      end.ord
-      @list.ord += 1;
+      if max_ord.nil?
+         @list.ord = 1
+      else
+        @list.ord = max_ord.ord + 1    
+      end
+      
       if @list.save
         render json: @list
       else

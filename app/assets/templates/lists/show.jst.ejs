@@ -1,11 +1,14 @@
-<div class="well col-xs-4"
+<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" 
 id="list<%= list.escape("id") %>">
 <!-- <button type="button" class="btn boardTile btn-primary btn-block"> -->
-
-  <%= list.escape("title") %>
-  <div class="cards"></div>
-  <div class="cards-new"></div>
-  <button type="button" class="btn btn-primary destroy-list col-xs-8">
-    Delete</button>
-  </button>
+  <div class="portlet-header">
+    <%= list.escape("title") %>
+  </div>
+  <div class="portlet-content">
+    <div class="cards"></div>
+    <div class="cards-new"></div>
+    <button type="button" class="btn btn-primary destroy-list col-xs-8">
+      Delete</button>
+    </button>
+  </div>
 </div>

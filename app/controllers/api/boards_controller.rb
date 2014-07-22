@@ -1,12 +1,21 @@
 module Api
   class BoardsController < ApiController
     def create
-      @board = current_user.boards.new(board_params)
-      @board.ord = current_user.boards.max_by do |board|
+      max = current_user.boards.max_by do |board|
         board.ord
-      end.ord
-      @board.ord += 1;
-      
+      end
+    
+      @board = current_user.boards.new(board_params)
+
+
+   
+      if max.nil?
+        @board.ord = 1
+      else
+        @board.ord = max.ord + 1    
+      end
+
+
       if @board.save
         render json: @board
       else

@@ -38,6 +38,11 @@ TrelloClone.Views.BoardsIndex = Backbone.CompositeView.extend({
   render: function(){
     var content = this.template({boards: this.collection});
     this.$el.html(content);
+    this.$(".btn-block").sortable({
+      placeholder: "sortable-placeholder",
+      forcePlaceholderSize: true,
+      cursorAt: {left: 5},
+    });
     this.attachSubviews();
     return this;
   }

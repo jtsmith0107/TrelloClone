@@ -3,19 +3,20 @@
 <div class="btn-group btn-block">
   
   <% boards.each(function(board){ %>
-    <a href = "#/boards/<%= board.escape("id") %>">
-      <div class="btn boardTile btn-primary col-xs-3">
+    <a href="#/boards/<%= board.escape("id") %>"
+      class="boardTile">
+      <div class="btn btn-primary col-xs-3">
           <%= board.escape("title") %>
       </div>
     </a>
   <% }); %>
 
 
+   
+
+</div>
     <div class="btn btn-primary dropdown-toggle col-xs-4">
        <div class="boards-new"></div>
       <!-- <div class="boards-new"></div> -->
     </div>
-
-</div>
-
 

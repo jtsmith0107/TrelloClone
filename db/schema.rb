@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720052044) do
+ActiveRecord::Schema.define(version: 20140721185102) do
 
   create_table "board_memberships", force: true do |t|
     t.integer  "user_id",    null: false
@@ -27,9 +27,10 @@ ActiveRecord::Schema.define(version: 20140720052044) do
     t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "ord"
+    t.integer  "ord",        null: false
   end
 
+  add_index "boards", ["ord"], name: "index_boards_on_ord", unique: true
   add_index "boards", ["user_id"], name: "index_boards_on_user_id"
 
   create_table "card_assignments", force: true do |t|
@@ -42,15 +43,16 @@ ActiveRecord::Schema.define(version: 20140720052044) do
   add_index "card_assignments", ["card_id", "user_id"], name: "index_card_assignments_on_card_id_and_user_id", unique: true
 
   create_table "cards", force: true do |t|
-    t.string   "title",                     null: false
-    t.integer  "list_id",                   null: false
+    t.string   "title",                   null: false
+    t.integer  "list_id",                 null: false
     t.text     "description"
-    t.float    "ord",         default: 0.0
+    t.integer  "ord",         default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "cards", ["list_id"], name: "index_cards_on_list_id"
+  add_index "cards", ["ord"], name: "index_cards_on_ord", unique: true
 
   create_table "items", force: true do |t|
     t.string   "title",                      null: false
@@ -63,14 +65,15 @@ ActiveRecord::Schema.define(version: 20140720052044) do
   add_index "items", ["card_id"], name: "index_items_on_card_id"
 
   create_table "lists", force: true do |t|
-    t.string   "title",                    null: false
-    t.integer  "board_id",                 null: false
-    t.float    "ord",        default: 0.0
+    t.string   "title",                  null: false
+    t.integer  "board_id",               null: false
+    t.integer  "ord",        default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "lists", ["board_id"], name: "index_lists_on_board_id"
+  add_index "lists", ["ord"], name: "index_lists_on_ord", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

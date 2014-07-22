@@ -6,13 +6,15 @@
 #  title       :string(255)      not null
 #  list_id     :integer          not null
 #  description :text
-#  ord         :float            default(0.0)
+#  ord         :integer          default(0), not null
 #  created_at  :datetime
 #  updated_at  :datetime
 #
 
 class Card < ActiveRecord::Base
+  validates :title, :list_id, :ord, presence: true
+  validates :ord, uniqueness: true
   belongs_to :list
-  has_many :items
-  has_many :card_assignments
+  has_many :items, dependent: :destroy
+  has_many :card_assignments, dependent: :destroy
 end

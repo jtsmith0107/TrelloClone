@@ -1,6 +1,10 @@
 <h3><%= board.escape("title") %></h3>
 
-<div class="lists sortable col-xs-9"></div>
+<div class="lists col-xs-9">
+  <div class="column col-xs-4" id="col0"></div>
+  <div class="column col-xs-4" id="col1"></div>
+  <div class="column col-xs-4" id="col2"></div>  
+</div>
 
 <div class=" col-xs-3">
   <div class="well lists-new"> </div>
@@ -12,16 +16,67 @@
       </button>  
     </a>
   
-   <a href="/#/">
-     <button type="button" class="destroy-board btn btn-primary">
+
+     <button type="button" class="destroy-board btn btn-primary"
+     data-toggle="modal" data-target="#delete-board-<%= board.escape("id") %>">
        <span class="glyphicon glyphicon-remove"></span>
        Delete Board
      </button>
-   </a>
+
+   </button>
+
+<div class="modal fade" id="delete-board-<%= board.escape("id") %>"
+   tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close
+          </span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete Board</h4>
+      </div>
+      <div class="modal-body">
+        Are you Sure?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+        </button>
+        <button type="button" class="btn btn-default confirm-delete" 
+        class="btn btn-primary">Delete!</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 
 </div>
   
 </div>
+
+
   <!-- <div class="boards-new"></div> -->
 
-
+<script type="text/javascript">
+var startOrd;
+var endOrd;
+$(function() {
+  $( ".col-xs-4" ).sortable({
+    connectWith: ".col-xs-4",
+    handle: ".portlet-header",
+    cancel: ".portlet-toggle",
+    placeholder: "portlet-placeholder ui-corner-all",
+    start: function(event, ui){
+      var col = parseInt($(event.target).attr("id").slice(-1));
+      var row = ui.item.index();
+      startOrd = col + row * 3;
+    },
+    end: 
+  });
+  $.ajax({
+    
+  })
+});
+</script>

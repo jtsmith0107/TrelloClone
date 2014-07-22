@@ -3,12 +3,17 @@ module Api
     before_action :require_board_member!
 
     def create
-      @card = current_list.cards.new(card_params)
-      
-      @card.ord = current_list.cards.max_by do |card|
+      max = current_list.cards.max_by do |card|
         card.ord
-      end.ord
-      @card.ord+=1;
+      end        
+
+      @card = current_list.cards.new(card_params)
+            
+      if max.nil?
+        @card.ord = 1
+      else
+        @card.ord = max.ord + 1 
+      end
       
       if @card.save
         render json: @card
